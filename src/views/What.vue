@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    <h3>ROUTING ABOUTING</h3>
+  <div class="what">
+    <h3>Am I going to do with these links</h3>
   </div>
 </template>
 
