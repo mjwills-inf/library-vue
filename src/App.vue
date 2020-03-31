@@ -1,15 +1,22 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/what">What</router-link>
-    </div>
+    <Header />
     <router-view />
   </div>
 </template>
 
-<!-- Import of CSS reset, global styling, background-image, nav bar -->
+<script>
+import Header from "./components/layout/Header";
+
+export default {
+  name: "app",
+  components: {
+    Header
+  }
+};
+</script>
+
+<!-- Import of CSS reset, style background image-->
 <style>
 @import url("./assets/css/reset.css");
 
@@ -28,20 +35,5 @@ body {
   width: 100%;
   height: 100vh;
   z-index: -2;
-}
-
-#nav {
-  font-size: 16px;
-  background-color: rgb(50, 50, 50);
-  padding: 10px;
-  position: sticky;
-  top: 0;
-  text-align: right;
-}
-
-#nav a {
-  text-decoration: none;
-  color: rgb(210, 210, 210);
-  margin: 5px 10px;
 }
 </style>

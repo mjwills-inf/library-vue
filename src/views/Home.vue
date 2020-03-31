@@ -14,16 +14,54 @@
     <div id="page-functions">
       <button>Add New Book</button>
     </div>
-    <div id="page-cards"></div>
+    <div id="page-cards">
+      <BookList v-bind:bookData="books" />
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import BookList from "../components/BookList";
 
 export default {
   name: "Home",
-  components: {}
+  components: {
+    BookList
+  },
+  data() {
+    return {
+      books: [
+        {
+          id: 1,
+          title: "The Bible",
+          author: "Those guys et al",
+          year: 1611,
+          read: false,
+          isbn: 9780007259762,
+          cover: ""
+        },
+        {
+          id: 2,
+          title: "Crime and Punishment",
+          author: "Fyodor Dostoevsky",
+          year: 1866,
+          read: true,
+          isbn: 9780140449136,
+          cover: ""
+        },
+        {
+          id: 3,
+          title: "The Silmarillion",
+          author: "J.R.R Tolkien",
+          year: 1977,
+          read: true,
+          isbn: 9788845272400,
+          cover: ""
+        }
+      ]
+    };
+  }
 };
 </script>
 
@@ -57,6 +95,7 @@ h3 {
 }
 
 #page-functions button {
+  cursor: pointer;
   padding: 7px;
   outline: none;
   color: rgb(228, 228, 228);
