@@ -4,7 +4,7 @@
       <img
         id="vue-logo"
         alt="Vue logo"
-        src="../assets/img/logo.png"
+        src="../../assets/img/logo.png"
         width="150px"
       />
       <h1>Library. <span>Dark.</span></h1>
@@ -22,7 +22,7 @@
 
 <script>
 // @ is an alias to /src
-import BookList from "../components/BookList";
+import BookList from "../BookList";
 
 export default {
   name: "Home",
@@ -37,6 +37,7 @@ export default {
           title: "The Bible",
           author: "Those guys et al",
           year: 1611,
+          rating: 0,
           read: false,
           isbn: 9780007259762,
           cover: ""
@@ -46,6 +47,7 @@ export default {
           title: "Crime and Punishment",
           author: "Fyodor Dostoevsky",
           year: 1866,
+          rating: 3,
           read: true,
           isbn: 9780140449136,
           cover: ""
@@ -55,12 +57,18 @@ export default {
           title: "The Silmarillion",
           author: "J.R.R Tolkien",
           year: 1977,
+          rating: 4,
           read: true,
           isbn: 9788845272400,
           cover: ""
         }
       ]
     };
+  },
+  methods: {
+    addUrl(id, url) {
+      console.log(id, url);
+    }
   }
 };
 </script>
