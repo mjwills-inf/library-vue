@@ -1,5 +1,8 @@
 <template>
   <div class="home">
+    <div v-if="showModal" class="modal-container">
+      <InputModal v-on:close-modal="showModal = false" />
+    </div>
     <div id="page-titles">
       <img
         id="vue-logo"
@@ -12,7 +15,7 @@
       <h3>Front-End Framework Project: Vue Library</h3>
     </div>
     <div id="page-functions">
-      <button>Add New Book</button>
+      <button v-on:click="showModal = true">Add New Book</button>
     </div>
     <div id="page-cards">
       <BookList v-bind:bookData="books" />
@@ -23,14 +26,17 @@
 <script>
 // @ is an alias to /src
 import BookList from "../BookList";
+import InputModal from "../InputModal";
 
 export default {
   name: "Home",
   components: {
-    BookList
+    BookList,
+    InputModal
   },
   data() {
     return {
+      showModal: false,
       books: [
         {
           id: 1,
@@ -74,6 +80,9 @@ export default {
 </script>
 
 <style scoped>
+/* Modal */
+
+/* Page */
 #vue-logo {
   margin: 20px 35px;
   float: right;

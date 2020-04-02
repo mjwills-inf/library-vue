@@ -46,15 +46,14 @@
           <label for="read">Read:</label>
           <input id="read" name="read" type="checkbox" />
           <br />
-          <input
-            id="submit"
-            type="button"
-            class="btn jsBtn"
-            name="submit"
-            value="Submit"
-          />
+          <input id="submit" type="button" name="submit" value="Submit" />
           <br />
-          <button id="cancel" type="button" class="btn jsBtn" name="cancel">
+          <button
+            v-on:click="$emit('close-modal')"
+            id="cancel"
+            type="button"
+            name="cancel"
+          >
             Cancel
           </button>
         </form>
@@ -69,4 +68,16 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.modal-background {
+  position: fixed;
+  z-index: 1;
+  padding-top: 200px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+</style>

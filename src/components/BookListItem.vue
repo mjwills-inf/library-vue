@@ -43,7 +43,10 @@ export default {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 30px;
-  min-height: 175px;
+}
+
+.book-card-left {
+  min-height: 90px;
 }
 
 .book-card-bottom {
