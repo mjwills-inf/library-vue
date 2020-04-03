@@ -25,7 +25,7 @@ export default {
   gap: 10px;
   padding: 25px;
 }
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1350px) {
   #card-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

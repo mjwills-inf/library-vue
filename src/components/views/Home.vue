@@ -8,7 +8,7 @@
         id="vue-logo"
         alt="Vue logo"
         src="../../assets/img/logo.png"
-        width="150px"
+        width="100px"
       />
       <h1>Library. <span>Dark.</span></h1>
       <h3>The Odin Project</h3>
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-// @ is an alias to /src
+//////////////////////////////////////////////////////////////////////////////////////-->
 import BookList from "../BookList";
 import InputModal from "../InputModal";
 
@@ -78,13 +78,11 @@ export default {
   }
 };
 </script>
-
+<!-- /////////////////////////////////////////////////////////////////////////////////-->
 <style scoped>
-/* Modal */
-
-/* Page */
+/* Home Page */
 #vue-logo {
-  margin: 20px 35px;
+  margin: 30px 60px 20px;
   float: right;
 }
 
@@ -150,5 +148,10 @@ h3 {
     color-stop(51%, rgb(51, 51, 51)),
     color-stop(100%, rgb(46, 46, 46))
   );
+}
+@media only screen and (max-width: 455px) {
+  #vue-logo {
+    float: left;
+  }
 }
 </style>
