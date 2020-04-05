@@ -1,7 +1,10 @@
 <template>
   <div class="home">
     <div v-if="showModal" class="modal-container">
-      <InputModal v-on:close-modal="showModal = false" />
+      <InputModal
+        v-on:close-modal="showModal = false"
+        v-on:new-book="addBook"
+      />
     </div>
     <div id="page-titles">
       <img
@@ -74,6 +77,9 @@ export default {
   methods: {
     addUrl(id, url) {
       console.log(id, url);
+    },
+    addBook(newBook) {
+      this.books.push(newBook);
     }
   }
 };

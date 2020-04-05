@@ -2,9 +2,10 @@
   <div class="modal-background">
     <div class="modal-container">
       <div class="input-form">
-        <form>
+        <form v-on:submit.prevent>
           <label for="title">Title:</label>
           <input
+            v-model="titleInput"
             id="title-input"
             name="title"
             type="text"
@@ -12,6 +13,7 @@
           />
           <label for="author">Author:</label>
           <input
+            v-model="authorInput"
             id="author-input"
             name="author"
             type="text"
@@ -19,6 +21,7 @@
           />
           <label for="year-input">Year:</label>
           <input
+            v-model="yearInput"
             id="year-input"
             name="year-input"
             type="number"
@@ -26,6 +29,7 @@
           />
           <label for="isbn-input">ISBN:</label>
           <input
+            v-model="isbnInput"
             id="isbn-input"
             name="isbn-input"
             type="text"
@@ -34,11 +38,21 @@
           <div class="read-rating-container">
             <div class="read-label-input">
               <label for="read-input">Read: </label>
-              <input id="read-input" name="read-input" type="checkbox" />
+              <input
+                v-model="readInput"
+                id="read-input"
+                name="read-input"
+                type="checkbox"
+              />
             </div>
             <div class="rating-label-input">
               <label for="rating-input">Rating:</label>
-              <select id="rating-input" name="rating-input" type="select">
+              <select
+                v-model="ratingInput"
+                id="rating-input"
+                name="rating-input"
+                type="select"
+              >
                 <option value="5">5</option>
                 <option value="4">4</option>
                 <option value="3">3</option>
@@ -47,7 +61,16 @@
               </select>
             </div>
           </div>
-          <button id="submit" name="submit">Submit</button>
+          <button
+            v-on:click="
+              submitBook();
+              $emit('close-modal');
+            "
+            id="submit"
+            name="submit"
+          >
+            Submit
+          </button>
           <button v-on:click="$emit('close-modal')" id="cancel" name="cancel">
             Cancel
           </button>
@@ -58,8 +81,34 @@
 </template>
 
 <script>
+import { v4 as uuidv4 } from "uuid";
 export default {
-  name: "InputModal"
+  name: "InputModal",
+  data() {
+    return {
+      titleInput: "",
+      authorInput: "",
+      yearInput: "",
+      ratingInput: "",
+      readInput: false,
+      isbnInput: ""
+    };
+  },
+  methods: {
+    submitBook() {
+      const newBook = {
+        id: uuidv4(),
+        title: this.titleInput,
+        author: this.authorInput,
+        year: this.yearInput,
+        rating: this.ratingInput,
+        read: this.readInput,
+        isbn: this.isbnInput,
+        cover: ""
+      };
+      this.$emit("new-book", newBook);
+    }
+  }
 };
 </script>
 

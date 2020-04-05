@@ -1,6 +1,6 @@
 <template>
-  <div class="rating-container">   
-    <span class="active"></span>
+  <div class="rating-container">
+    <span :class="{ active: bookItem.rating >= 1 }"></span>
     <span :class="{ active: bookItem.rating >= 2 }"></span>
     <span :class="{ active: bookItem.rating >= 3 }"></span>
     <span :class="{ active: bookItem.rating >= 4 }"></span>
@@ -11,8 +11,7 @@
 <script>
 export default {
   name: "BookListItemRating",
-  props: ["bookItem"],
-  
+  props: ["bookItem"]
 };
 </script>
 

@@ -8,27 +8,30 @@
       >
         Read
       </button>
-      <button v-else class="unread-button" v-on:click="toggleRead">Unread</button>
+      <button v-else class="unread-button" v-on:click="toggleRead">
+        Unread
+      </button>
     </div>
     <div class="edit-del-buttons">
-      <button class="edit-button" v-on:click="editBookItem">Edit</button>
-      <button class="del-button">X</button>
+      <button v-on:click="editBook" class="edit-button">Edit</button>
+      <button v-on:click="$emit('delete-book', bookItem.id)" class="del-button">
+        X
+      </button>
+      <!-- YEERRRRRRRRR delete book -->
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "BookListItemButtons",
- 
   props: ["bookItem"],
   methods: {
     toggleRead() {
       this.bookItem.read = !this.bookItem.read;
     },
-    editBookItem() {
-      console.log(`edit ${this.bookItem}`)
+    editBook() {
+      console.log(`edit ${this.bookItem.id}`);
     }
   }
 };
