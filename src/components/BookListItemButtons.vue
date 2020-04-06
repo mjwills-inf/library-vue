@@ -17,7 +17,6 @@
       <button v-on:click="$emit('delete-book', bookItem.id)" class="del-button">
         X
       </button>
-      <!-- YEERRRRRRRRR delete book -->
     </div>
   </div>
 </template>

@@ -10,7 +10,10 @@
       <BookListItemCover v-bind:bookItem="bookItem" />
     </div>
     <div class="book-card-bottom">
-      <BookListItemButtons v-bind:bookItem="bookItem" />
+      <BookListItemButtons
+        v-on:delete-book="$emit('delete-book', bookItem.id)"
+        v-bind:bookItem="bookItem"
+      />
     </div>
   </div>
 </template>

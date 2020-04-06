@@ -21,7 +21,7 @@
       <button v-on:click="showModal = true">Add New Book</button>
     </div>
     <div id="page-cards">
-      <BookList v-bind:bookData="books" />
+      <BookList v-on:click="deleteBook" v-bind:bookData="books" />
     </div>
   </div>
 </template>
@@ -80,6 +80,9 @@ export default {
     },
     addBook(newBook) {
       this.books.push(newBook);
+    },
+    deleteBook(targetBook) {
+      console.log(targetBook);
     }
   }
 };

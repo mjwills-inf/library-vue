@@ -115,7 +115,7 @@ export default {
 <style scoped>
 .modal-background {
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   padding-top: 200px;
   left: 0;
   top: 0;

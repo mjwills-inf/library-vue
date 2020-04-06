@@ -1,25 +1,34 @@
 <template>
   <div id="card-container">
-    <div v-for="index in bookData" v-bind:key="index.id">
-      <BookListItem v-bind:bookItem="index" />
+    <div class="card" v-for="obj in bookData" v-bind:key="obj.id">
+      <DeleteModal v-bind:bookItem="obj" class="hidden" />
+      <BookListItem v-bind:bookItem="obj" v-on:delete-book="deleteCheck" />
     </div>
   </div>
 </template>
 
 <script>
 import BookListItem from "./BookListItem";
+import DeleteModal from "./DeleteModal";
 
 export default {
   name: "BookList",
   props: ["bookData"],
   components: {
-    BookListItem
+    BookListItem,
+    DeleteModal
+  },
+  methods: {
+    deleteCheck(bookItemIdPayload) {
+      console.log(bookItemIdPayload + " in BookList");
+    }
   }
 };
 </script>
 
 <style>
 #card-container {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 10px;
@@ -42,5 +51,11 @@ export default {
     display: grid;
     grid-template-columns: 1fr;
   }
+}
+.card {
+  position: relative;
+}
+.hidden {
+  display: none;
 }
 </style>
