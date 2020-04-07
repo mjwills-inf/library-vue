@@ -35,43 +35,11 @@
             type="text"
             placeholder="ISBN number"
           />
-          <div class="read-rating-container">
-            <div class="read-label-input">
-              <label for="read-input">Read: </label>
-              <input
-                v-model="readInput"
-                id="read-input"
-                name="read-input"
-                type="checkbox"
-              />
-            </div>
-            <div class="rating-label-input">
-              <label for="rating-input">Rating:</label>
-              <select
-                v-model="ratingInput"
-                id="rating-input"
-                name="rating-input"
-                type="select"
-              >
-                <option value="5">5</option>
-                <option value="4">4</option>
-                <option value="3">3</option>
-                <option value="2">2</option>
-                <option value="1">1</option>
-              </select>
-            </div>
-          </div>
-          <button
-            v-on:click="
-              submitBook();
-              $emit('close-modal');
-            "
-            id="submit"
-            name="submit"
-          >
-            Submit
+
+          <button v-on:click="editConfirmed" id="edit" name="edit">
+            Edit
           </button>
-          <button v-on:click="$emit('close-modal')" id="cancel" name="cancel">
+          <button v-on:click="$emit('close-edit')" id="cancel" name="cancel">
             Cancel
           </button>
         </form>
@@ -81,33 +49,32 @@
 </template>
 
 <script>
-import { v4 as uuidv4 } from "uuid";
 export default {
-  name: "InputModal",
+  name: "BookEditModal",
+  props: ["targetEdit"],
   data() {
     return {
-      titleInput: "",
-      authorInput: "",
-      yearInput: "",
-      ratingInput: "",
-      readInput: false,
-      isbnInput: ""
+      titleInput: this.targetEdit.title,
+      authorInput: this.targetEdit.author,
+      yearInput: this.targetEdit.year,
+      isbnInput: this.targetEdit.isbn
     };
   },
   methods: {
-    submitBook() {
-      const newBook = {
-        id: uuidv4(),
+    editConfirmed() {
+      const editedBook = {
+        id: this.targetEdit.id,
         title: this.titleInput,
         author: this.authorInput,
         year: this.yearInput,
-        rating: this.ratingInput,
-        read: this.readInput,
+        rating: this.targetEdit.rating,
+        read: this.targetEdit.read,
         isbn: this.isbnInput,
         cover: "",
         hideDelete: true
       };
-      this.$emit("new-book", newBook);
+      this.$emit("edit-confirm", editedBook);
+      this.$emit("close-edit");
     }
   }
 };
@@ -156,34 +123,6 @@ input {
   outline: none;
   font-size: 0.9em;
 }
-
-input[type="checkbox"] {
-  width: 30px;
-  border-radius: 2px;
-  height: 30px;
-  display: inline-block;
-  margin: 5px 5px 5px 20px;
-  cursor: pointer;
-}
-
-select {
-  height: 30px;
-  width: 60px;
-  border-radius: 2px;
-  margin: 5px 0px 5px 10px;
-  font-size: 0.9rem;
-  cursor: pointer;
-}
-
-.read-rating-container {
-  display: flex;
-  justify-content: space-between;
-}
-.read-label-input {
-  display: flex;
-  align-items: center;
-}
-
 button {
   margin: 10px 0px;
   display: block;
@@ -205,11 +144,11 @@ button:hover {
   color: rgb(40, 40, 40);
 }
 
-button[name="submit"] {
+button[name="edit"] {
   border: 2px solid #26a69a;
   color: #26a69a;
 }
-button[name="submit"]:hover {
+button[name="edit"]:hover {
   border: 1px solid #26a69a;
   background-color: #26a69a;
   color: rgb(40, 40, 40);

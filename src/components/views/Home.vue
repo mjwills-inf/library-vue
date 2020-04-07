@@ -1,22 +1,20 @@
 <template>
   <div class="home">
-    <!-- This edit modal is last messy add on and I imagine perfect demo for need for state -->
-    <div v-if="showEditModal" class="modal-container">
-      <InputModal
-        v-bind:bookItem="targetEdit"
-        v-on:close-modal="
-          showEditModal = false;
-          targetEdit = false;
-        "
-        v-on:new-book="editBook"
-      />
-    </div>
     <div v-if="showModal" class="modal-container">
       <InputModal
         v-on:close-modal="showModal = false"
         v-on:new-book="addBook"
       />
     </div>
+
+    <div v-if="showEditModal" class="modal-container">
+      <BookEditModal
+        v-on:close-edit="showEditModal = false"
+        v-on:edit-confirm="editBook"
+        v-bind:targetEdit="targetEdit"
+      />
+    </div>
+
     <div id="page-titles">
       <img
         id="vue-logo"
@@ -43,19 +41,21 @@
 
 <script>
 import BookList from "../BookList";
+import BookEditModal from "../BookEditModal";
 import InputModal from "../InputModal";
 
 export default {
   name: "Home",
   components: {
     BookList,
+    BookEditModal,
     InputModal
   },
   data() {
     return {
       showModal: false,
       showEditModal: false,
-      targetEdit: false,
+      targetEdit: {},
       books: [
         {
           id: 1,
@@ -103,11 +103,13 @@ export default {
     openEdit(bookItemPayload) {
       this.showEditModal = true;
       this.targetEdit = bookItemPayload;
-      console.log(this.targetEdit);
-      console.log("ABOVE targetEdit in Home");
     },
     editBook(editedBook) {
       console.log(editedBook);
+      const isMatch = obj => obj.id === editedBook.id;
+      const indexMatch = this.books.findIndex(isMatch);
+      console.log(indexMatch);
+      this.books.splice(indexMatch, 1, editedBook);
     }
   }
 };
