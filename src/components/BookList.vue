@@ -1,7 +1,10 @@
 <template>
   <div id="card-container">
     <div class="card" v-for="obj in bookData" v-bind:key="obj.id">
-      <DeleteModal v-bind:bookItem="obj" v-on:delete-book="deleteBook" />
+      <DeleteModal
+        v-bind:bookItem="obj"
+        v-on:delete-book="bookIdPayload => $emit('delete-book', bookIdPayload)"
+      />
       <BookListItem v-bind:bookItem="obj" />
     </div>
   </div>
@@ -17,13 +20,6 @@ export default {
   components: {
     BookListItem,
     DeleteModal
-  },
-  methods: {
-    deleteBook(bookItemIdPayload) {
-      this.bookData = this.bookData.filter(
-        item => item.id != bookItemIdPayload
-      );
-    }
   }
 };
 </script>

@@ -21,7 +21,7 @@
       <button v-on:click="showModal = true">Add New Book</button>
     </div>
     <div id="page-cards">
-      <BookList v-on:click="deleteBook" v-bind:bookData="books" />
+      <BookList v-on:delete-book="deleteBook" v-bind:bookData="books" />
     </div>
   </div>
 </template>
@@ -84,8 +84,8 @@ export default {
     addBook(newBook) {
       this.books.push(newBook);
     },
-    deleteBook(targetBook) {
-      console.log(targetBook);
+    deleteBook(bookItemIdPayload) {
+      this.books = this.books.filter(item => item.id != bookItemIdPayload);
     }
   }
 };
