@@ -1,5 +1,16 @@
 <template>
   <div class="home">
+    <!-- This edit modal is last messy add on and I imagine perfect demo for need for state -->
+    <div v-if="showEditModal" class="modal-container">
+      <InputModal
+        v-bind:bookItem="targetEdit"
+        v-on:close-modal="
+          showEditModal = false;
+          targetEdit = false;
+        "
+        v-on:new-book="editBook"
+      />
+    </div>
     <div v-if="showModal" class="modal-container">
       <InputModal
         v-on:close-modal="showModal = false"
@@ -21,13 +32,16 @@
       <button v-on:click="showModal = true">Add New Book</button>
     </div>
     <div id="page-cards">
-      <BookList v-on:delete-book="deleteBook" v-bind:bookData="books" />
+      <BookList
+        v-on:delete-book="deleteBook"
+        v-on:open-edit="openEdit"
+        v-bind:bookData="books"
+      />
     </div>
   </div>
 </template>
 
 <script>
-//////////////////////////////////////////////////////////////////////////////////////-->
 import BookList from "../BookList";
 import InputModal from "../InputModal";
 
@@ -40,6 +54,8 @@ export default {
   data() {
     return {
       showModal: false,
+      showEditModal: false,
+      targetEdit: false,
       books: [
         {
           id: 1,
@@ -78,14 +94,20 @@ export default {
     };
   },
   methods: {
-    addUrl(id, url) {
-      console.log(id, url);
-    },
     addBook(newBook) {
       this.books.push(newBook);
     },
     deleteBook(bookItemIdPayload) {
       this.books = this.books.filter(item => item.id != bookItemIdPayload);
+    },
+    openEdit(bookItemPayload) {
+      this.showEditModal = true;
+      this.targetEdit = bookItemPayload;
+      console.log(this.targetEdit);
+      console.log("ABOVE targetEdit in Home");
+    },
+    editBook(editedBook) {
+      console.log(editedBook);
     }
   }
 };

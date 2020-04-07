@@ -30,8 +30,7 @@ export default {
       this.bookItem.read = !this.bookItem.read;
     },
     editBook() {
-      console.log(`edit ${this.bookItem.id}`);
-      this.$emit("edit-book", this.bookItem.id);
+      this.$emit("open-edit", this.bookItem);
     },
     deleteBook() {
       this.bookItem.hideDelete = false;

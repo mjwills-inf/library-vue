@@ -11,6 +11,7 @@
     </div>
     <div class="book-card-bottom">
       <BookListItemButtons
+        v-on:open-edit="$emit('open-edit', bookItem)"
         v-on:delete-book="$emit('delete-book', bookItem.id)"
         v-bind:bookItem="bookItem"
       />

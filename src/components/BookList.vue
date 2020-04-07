@@ -5,7 +5,10 @@
         v-bind:bookItem="obj"
         v-on:delete-book="bookIdPayload => $emit('delete-book', bookIdPayload)"
       />
-      <BookListItem v-bind:bookItem="obj" />
+      <BookListItem
+        v-bind:bookItem="obj"
+        v-on:open-edit="bookItemPayload => $emit('open-edit', bookItemPayload)"
+      />
     </div>
   </div>
 </template>
