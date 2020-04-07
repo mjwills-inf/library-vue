@@ -105,7 +105,8 @@ export default {
         rating: this.ratingInput,
         read: this.readInput,
         isbn: this.isbnInput,
-        cover: ""
+        cover: "",
+        hideDelete: true
       };
       this.$emit("new-book", newBook);
     }
