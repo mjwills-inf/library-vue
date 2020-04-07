@@ -105,10 +105,9 @@ export default {
       this.targetEdit = bookItemPayload;
     },
     editBook(editedBook) {
-      console.log(editedBook);
       const isMatch = obj => obj.id === editedBook.id;
       const indexMatch = this.books.findIndex(isMatch);
-      console.log(indexMatch);
+
       this.books.splice(indexMatch, 1, editedBook);
     }
   }
