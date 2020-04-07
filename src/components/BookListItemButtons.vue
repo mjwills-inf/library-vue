@@ -14,7 +14,7 @@
     </div>
     <div class="edit-del-buttons">
       <button v-on:click="editBook" class="edit-button">Edit</button>
-      <button v-on:click="$emit('delete-book', bookItem.id)" class="del-button">
+      <button v-on:click="deleteBook" class="del-button">
         X
       </button>
     </div>
@@ -31,6 +31,10 @@ export default {
     },
     editBook() {
       console.log(`edit ${this.bookItem.id}`);
+      this.$emit("edit-book", this.bookItem.id);
+    },
+    deleteBook() {
+      this.bookItem.hideDelete = false;
     }
   }
 };

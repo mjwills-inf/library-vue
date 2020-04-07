@@ -1,8 +1,8 @@
 <template>
   <div id="card-container">
     <div class="card" v-for="obj in bookData" v-bind:key="obj.id">
-      <DeleteModal v-bind:bookItem="obj" class="hidden" />
-      <BookListItem v-bind:bookItem="obj" v-on:delete-book="deleteCheck" />
+      <DeleteModal v-bind:bookItem="obj" v-on:delete-book="deleteBook" />
+      <BookListItem v-bind:bookItem="obj" />
     </div>
   </div>
 </template>
@@ -19,8 +19,10 @@ export default {
     DeleteModal
   },
   methods: {
-    deleteCheck(bookItemIdPayload) {
-      console.log(bookItemIdPayload + " in BookList");
+    deleteBook(bookItemIdPayload) {
+      this.bookData = this.bookData.filter(
+        item => item.id != bookItemIdPayload
+      );
     }
   }
 };
@@ -54,8 +56,5 @@ export default {
 }
 .card {
   position: relative;
-}
-.hidden {
-  display: none;
 }
 </style>

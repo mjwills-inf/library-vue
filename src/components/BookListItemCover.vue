@@ -1,5 +1,5 @@
 <template>
-  <div>Cover</div>
+  <div>[Cover TBD]</div>
 </template>
 
 <script>

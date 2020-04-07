@@ -49,7 +49,8 @@ export default {
           rating: 0,
           read: false,
           isbn: 9780007259762,
-          cover: ""
+          cover: "",
+          hideDelete: true
         },
         {
           id: 2,
@@ -59,7 +60,8 @@ export default {
           rating: 3,
           read: true,
           isbn: 9780140449136,
-          cover: ""
+          cover: "",
+          hideDelete: true
         },
         {
           id: 3,
@@ -69,7 +71,8 @@ export default {
           rating: 4,
           read: true,
           isbn: 9788845272400,
-          cover: ""
+          cover: "",
+          hideDelete: true
         }
       ]
     };
@@ -87,9 +90,8 @@ export default {
   }
 };
 </script>
-<!-- /////////////////////////////////////////////////////////////////////////////////-->
+
 <style scoped>
-/* Home Page */
 #vue-logo {
   margin: 30px 60px 20px;
   float: right;
