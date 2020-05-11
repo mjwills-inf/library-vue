@@ -1,12 +1,13 @@
 
 Framework project (recreating the library project in chosen framework) from The Odin Project's curriculum (https://www.theodinproject.com/courses/javascript/lessons/frameworks).
 
-Repo live in student submissions (https://mjwills-inf.github.io/-TOP-library-vue/)
+_*Repo live in student submissions (https://mjwills-inf.github.io/-TOP-library-vue/)*_
 
 Original library project from the curriculum:
-https://www.theodinproject.com/courses/javascript/lessons/library
+(https://www.theodinproject.com/courses/javascript/lessons/library)
+
 Original vanilla javascript project:
-https://mjwills-inf.github.io/-TOP-library/
+(https://mjwills-inf.github.io/-TOP-library/)
 
 
 
