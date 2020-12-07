@@ -27,6 +27,9 @@ export default {
 };
 </script>
 
+
+// can change below for set size cards and auto fill cols?
+
 <style>
 #card-container {
   position: relative;
