@@ -86,7 +86,7 @@ export default {
           year: 1977,
           rating: 4,
           read: true,
-          isbn: 9788845272400,
+          isbn: 9780618391110,
           cover: "",
           hideDelete: true
         }
@@ -107,7 +107,6 @@ export default {
     editBook(editedBook) {
       const isMatch = obj => obj.id === editedBook.id;
       const indexMatch = this.books.findIndex(isMatch);
-
       this.books.splice(indexMatch, 1, editedBook);
     }
   }
