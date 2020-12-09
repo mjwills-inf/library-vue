@@ -33,8 +33,7 @@ export default {
         this.foundCover = true;
         this.url = `${responseData.items[0].volumeInfo.imageLinks.smallThumbnail}`;
         console.log("found");
-        console.log("foundCover=", this.foundCover);
-        console.log("url", this.url);
+        this.bookItem.cover = this.url
       }
     }
   },
@@ -50,8 +49,6 @@ export default {
       this.isbnPresent = true;
       this.getCover();
     }
-    // add url from API to books array
-    // https://www.googleapis.com/books/v1/volumes?q=isbn:
   }
 };
 </script>
