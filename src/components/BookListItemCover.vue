@@ -33,7 +33,7 @@ export default {
         this.foundCover = true;
         this.url = `${responseData.items[0].volumeInfo.imageLinks.smallThumbnail}`;
         console.log("found");
-        this.bookItem.cover = this.url
+        this.bookItem.cover = this.url;
       }
     }
   },
@@ -62,7 +62,7 @@ export default {
 }
 
 .cover-image {
-  max-height: 125px;
+  height: 125px;
   border-radius: 5px;
   filter: grayscale(50%);
 }
@@ -70,7 +70,11 @@ export default {
 .image-placeholder {
   font-size: 10px;
   text-align: center;
-  max-height: 125px;
+  height: 125px;
+  width: 90px;
+  padding: 10px;
   border-radius: 5px;
+  border: 1px solid rgb(100,100,100);
+  background-color: rgb(50, 50, 50);
 }
 </style>
